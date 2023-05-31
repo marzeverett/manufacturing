@@ -26,7 +26,9 @@ import copy
 
 
 
-csv_path = "/home/maryeverett/Documents/manufacturing/Screening datasets for laser welded steel-copper lap joints/V1 and V2/"
+#csv_path = "/home/maryeverett/Documents/manufacturing/Screening datasets for laser welded steel-copper lap joints/V1 and V2/"
+csv_path = "V1 and V2/"
+
 
 load_path = csv_path+"V1_joints.csv"
 
@@ -229,7 +231,7 @@ class rule:
         #Pretty naiive right now! - just adding each 
         #OLD - plain vanilla no special score run 
         #score = self.calc_support_percent() + self.calc_confidence() + self.calc_lift()
-        score = self.calc_support_percent() + self.calc_confidence() + 5*self.calc_lift()
+        score = 2*self.calc_support_percent() + self.calc_confidence() + 5*self.calc_lift()
 
         self.score = score
         return score 
@@ -552,6 +554,6 @@ generations = 50
 pop = population(df, mod_parameters, pop_size, precedent, mutation_rate=mutation_rate, top_keep=top_keep)
 
 pop.run_experiment(generations, status=False)
-pop.save_rules_to_csv("weld_run_5_times_lift")
+pop.save_rules_to_csv("time_5_life_2_time_support")
 
 
