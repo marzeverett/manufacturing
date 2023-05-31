@@ -231,7 +231,7 @@ class rule:
         #Pretty naiive right now! - just adding each 
         #OLD - plain vanilla no special score run 
         #score = self.calc_support_percent() + self.calc_confidence() + self.calc_lift()
-        score = 2*self.calc_support_percent() + self.calc_confidence() + 5*self.calc_lift()
+        score = 5*self.calc_support_percent() + self.calc_confidence() + 5*(abs(1-self.calc_lift()))
 
         self.score = score
         return score 
@@ -545,15 +545,15 @@ precedent = parameter("cracking in the weld metal", df["cracking in the weld met
 # top_keep = 10
 # generations = 25
 
-pop_size = 100
+pop_size = 200
 mutation_rate = 0.2
 top_keep = 10
-generations = 50
+generations = 500
 
 
 pop = population(df, mod_parameters, pop_size, precedent, mutation_rate=mutation_rate, top_keep=top_keep)
 
 pop.run_experiment(generations, status=False)
-pop.save_rules_to_csv("time_5_life_2_time_support")
+pop.save_rules_to_csv("time_5_life_5_time_support_500_gen_200_pop")
 
 
