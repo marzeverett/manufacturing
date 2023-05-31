@@ -538,12 +538,6 @@ def load_in():
 df = load_in()
 precedent = parameter("cracking in the weld metal", df["cracking in the weld metal"], static_val_present=True, static_val=1)
 
-
-
-# pop_size = 3
-# mutation_rate = 0.2
-# top_keep = 3
-
 # pop_size = 100
 # mutation_rate = 0.2
 # top_keep = 10
@@ -557,63 +551,7 @@ generations = 50
 
 pop = population(df, mod_parameters, pop_size, precedent, mutation_rate=mutation_rate, top_keep=top_keep)
 
-#pop.print_self()
-#pop.print_rules()
-#pop.score_population()
-# pop.run_generation()
-# pop.run_generation()
-# pop.run_generation()
-# pop.run_generation()
-
 pop.run_experiment(generations, status=False)
 pop.save_rules_to_csv("vanilla_run_5_times_lift")
 
 
-#Definition of hyperparameters 
-#For instance -- modulation rate)
-
-
-#Figure out quantitive analysis rules 
-
-
-#How do we initialize, and how do we change? 
-
-#Mutation Rate - think about how you want to mutate 
-
-#Range of the upper and lower bound value should be less than standard_dev. 
-#Limit range to 20% of standard deviation 
-
-#lower bound must be above minimum
-#upper bound must be below maximum 
-#What percent should they change by? 
-#10-20% of standard dev? (+ or - - move it one way or another)
-#Make sure lower bound and upper bound do not flip flop!  
-
-#present true or false 
-
-#Only change one - upper, lower, or present -- at a time! 
-
-#set random 
-# - upper and lower values must be within distribution and range. 
-
-#Normalizing might be better? 
-
-
-
-#Need a big population with a lot of generations here I think. 
-
-
-#Need a class for a variable -
-#Derived from class  
-#min
-#max
-#mean
-#std_dev
-#count
-#Potentially passed in 
-#curr_present
-#curr_lower_bound
-#curr_upper_bound
-#Potentially passed in 
-#static_val_present = T/F
-#static_val = ? 

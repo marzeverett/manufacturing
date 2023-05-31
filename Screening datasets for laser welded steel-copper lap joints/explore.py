@@ -30,7 +30,11 @@ csv_path = "/home/marz/Documents/ai_research/manufacturing/Screening datasets fo
 
 load_path = csv_path+"V1_joints.csv"
 
+#Old
 parameters = ["power (W)", "welding speed (m/min)", "gas flow rate (l/min)", "focal position (mm)", "angular position (°)", "material thickness (mm)", "cracking in the weld metal"]
+
+parameters = ["power (W)", "welding speed (m/min)", "gas flow rate (l/min)", "focal position (mm)", "angular position (°)", "material thickness (mm)", "cracking in the weld metal", "weld depth copper (µm)"]
+
 
 mod_parameters = ["power (W)", "welding speed (m/min)", "gas flow rate (l/min)", "focal position (mm)", "angular position (°)", "material thickness (mm)"]
 
@@ -50,54 +54,7 @@ yes = df.loc[df["cracking in the weld metal"] == 1]
 
 print(len(yes.index))
 
+print(df.columns)
 
 
 
-#Definition of hyperparameters 
-#For instance -- modulation rate)
-
-
-#Figure out quantitive analysis rules 
-
-
-#How do we initialize, and how do we change? 
-
-#Mutation Rate - think about how you want to mutate 
-
-#Range of the upper and lower bound value should be less than standard_dev. 
-#Limit range to 20% of standard deviation 
-
-#lower bound must be above minimum
-#upper bound must be below maximum 
-#What percent should they change by? 
-#10-20% of standard dev? (+ or - - move it one way or another)
-#Make sure lower bound and upper bound do not flip flop!  
-
-#present true or false 
-
-#Only change one - upper, lower, or present -- at a time! 
-
-#set random 
-# - upper and lower values must be within distribution and range. 
-
-#Normalizing might be better? 
-
-
-
-#Need a big population with a lot of generations here I think. 
-
-
-#Need a class for a variable -
-#Derived from class  
-#min
-#max
-#mean
-#std_dev
-#count
-#Potentially passed in 
-#curr_present
-#curr_lower_bound
-#curr_upper_bound
-#Potentially passed in 
-#static_val_present = T/F
-#static_val = ? 
