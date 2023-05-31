@@ -26,13 +26,13 @@ import copy
 
 
 
-csv_path = "/home/marz/Documents/ai_research/manufacturing/Screening datasets for laser welded steel-copper lap joints/V1 and V2/"
+csv_path = "/home/maryeverett/Documents/manufacturing/Screening datasets for laser welded steel-copper lap joints/V1 and V2/"
 
 load_path = csv_path+"V1_joints.csv"
 
 parameters = ["power (W)", "welding speed (m/min)", "gas flow rate (l/min)", "focal position (mm)", "angular position (°)", "material thickness (mm)", "cracking in the weld metal"]
 
-mod_parameters = ["power (W)", "welding speed (m/min)", "gas flow rate (l/min)", "focal position (mm)", "angular position (°)", "material thickness (mm)"]
+mod_parameters = ["power (W)", "welding speed (m/min)", "gas flow rate (l/min)", "focal position (mm)", "angular position (°)", "material thickness (mm)", "weld depth copper (µm)"]
 
 
 ############################################ PARAMETER CLASS ##################################################
@@ -462,16 +462,16 @@ class population:
         all_rules_list = [] 
         for rule in saving_list:
             rule_list = []
-            rule_list.append("RULES")
-            for item in rule.present_antecedent:
-                rule_list.append(item.name)
-                rule_list.append(item.curr_lower_bound)
-                rule_list.append(item.curr_upper_bound)
             rule_list.append("SCORES: s, c, l, score")
             rule_list.append(rule.support)
             rule_list.append(rule.confidence)
             rule_list.append(rule.lift)
             rule_list.append(rule.score)
+            rule_list.append("RULES")
+            for item in rule.present_antecedent:
+                rule_list.append(item.name)
+                rule_list.append(item.curr_lower_bound)
+                rule_list.append(item.curr_upper_bound)
             all_rules_list.append(rule_list)
 
         df = pd.DataFrame(all_rules_list)
@@ -552,6 +552,6 @@ generations = 50
 pop = population(df, mod_parameters, pop_size, precedent, mutation_rate=mutation_rate, top_keep=top_keep)
 
 pop.run_experiment(generations, status=False)
-pop.save_rules_to_csv("vanilla_run_5_times_lift")
+pop.save_rules_to_csv("weld_run_5_times_lift")
 
 
